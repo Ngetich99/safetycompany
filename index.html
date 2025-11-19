@@ -233,19 +233,80 @@ Our team is made up of passionate, experienced professionals committed to equipp
                 </div>-->           
             </div><!-- /container -->                   
             <!-- End Who We Are -->
-<!-- ========== AJIRA HEXAGONS (BIG + BLACK BORDERS) ========== -->
-<div class="ajira-hexagons-section">
-    <div class="ajira-hexagons-wrapper">
-        <div class="ajira-hex" id="ajira-central">AJIRA<br>DIGITAL</div>
-        <div class="ajira-hex" id="ajira-elearning">eLearning</div>
-        <div class="ajira-hex" id="ajira-trainings">Trainings</div>
-        <div class="ajira-hex" id="ajira-jobs">Jobs</div>
-        <div class="ajira-hex" id="ajira-studios">Studios</div>
-        <div class="ajira-hex" id="ajira-community">Community...</div>
-        <div class="ajira-hex" id="ajira-centres">Centres</div>
-    </div>
+<!-- SIMPLE & BEAUTIFUL AJIRA HEXAGONS – JUST PASTE THIS ANYWHERE -->
+<div class="ajira-simple-hexagons">
+    <div class="hex center">AJIRA<br><strong>DIGITAL</strong></div>
+    <div class="hex top">eLearning</div>
+    <div class="hex top-left">Trainings</div>
+    <div class="hex top-right">Jobs</div>
+    <div class="hex bottom-left">Studios</div>
+    <div class="hex bottom">Community...</div>
+    <div class="hex bottom-right">Centres</div>
 </div>
-<!-- ========== END OF AJIRA HEXAGONS ========== -->
+
+<style>
+    .ajira-simple-hexagons {
+        position: relative;
+        width: 500px;
+        height: 500px;
+        max-width: 90vw;
+        margin: 60px auto;
+        font-family: Arial, sans-serif;
+    }
+
+    .hex {
+        position: absolute;
+        width: 140px;
+        height: 160px;
+        background: white;
+        color: black;
+        font-weight: bold;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border: 2px solid black;                    /* Thin black outline */
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        transition: all 0.3s ease;
+        cursor: default;
+    }
+
+    .hex:hover {
+        background: red;
+        color: white;
+    }
+
+    /* Positioning */
+    .center      { top: 170px; left: 180px; font-size: 24px; background: transparent; color: #0b8c3a; }
+    .top         { top: 70px;  left: 180px; color: #0b8c3a; }
+    .top-left    { top: 130px; left: 70px;  }
+    .top-right   { top: 130px; left: 290px; }
+    .bottom-left { top: 250px; left: 70px;  color: #0b8c3a; }
+    .bottom      { top: 310px; left: 180px; color: #0b8c3a; }
+    .bottom-right{ top: 250px; left: 290px; color: #0b8c3a; }
+
+    /* Responsive – perfect on mobile */
+    @media (max-width: 600px) {
+        .ajira-simple-hexagons { width: 340px; height: 380px; margin: 40px auto; }
+        .hex { width: 100px; height: 115px; font-size: 14px; border-width: 1.8px; }
+        .center      { top: 118px; left: 120px; font-size: 20px; }
+        .top         { top: 45px;  left: 120px; }
+        .top-left    { top: 95px;  left: 40px;  }
+        .top-right   { top: 95px;  left: 200px; }
+        .bottom-left { top: 185px; left: 40px;  }
+        .bottom      { top: 235px; left: 120px; }
+        .bottom-right{ top: 185px; left: 200px; }
+    }
+
+    @media (max-width: 400px) {
+        .ajira-simple-hexagons { width: 300px; height: 340px; }
+        .hex { width: 90px; height: 103px; font-size: 13px; }
+        .center { font-size: 18px; top: 105px; left: 105px; }
+        .top    { top: 38px; left: 105px; }
+    }
+</style>
+<!-- END OF AJIRA HEXAGONS -->
             <!-- Our Process -->            
             <!--<section class="bg-color padding-bottom padding-top-x2">
                 <div class="container">                                                        
