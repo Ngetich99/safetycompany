@@ -234,92 +234,75 @@ Our team is made up of passionate, experienced professionals committed to equipp
             </div><!-- /container -->                   
             <!-- End Who We Are -->
            <!-- ========== START OF HEXAGON SECTION (paste this wherever you want) ========== -->
-<!-- ========== AJIRA HEXAGON SECTION WITH BLACK BORDER (paste anywhere) ========== -->
-<div class="ajira-hexagon-section">
+<!-- BIG AJIRA HEXAGONS WITH STRONG BLACK BORDERS (just paste it) -->
+<div class="ajira-hexagons-black-border">
     <style>
-        .ajira-hexagon-section {
-            padding: 60px 20px;
+        .ajira-hexagons-black-border {
+            padding: 80px 20px;
             text-align: center;
-            background: transparent; /* works on any background */
         }
 
-        .ajira-hexagon-wrapper {
+        .ajira-wrapper {
             position: relative;
             width: 100%;
-            max-width: 420px;
-            height: 420px;
+            max-width: 580px;
+            height: 580px;
             margin: 0 auto;
         }
 
         .ajira-hex {
             position: absolute;
-            width: 30%;
-            height: 26%;
+            width: 33%;
+            height: 29%;
             background: white;
-            color: #333;
-            font-weight: bold;
+            color: #111;
+            font-weight: 800;
+            font-size: 5.3vw;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            line-height: 1.2;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             cursor: pointer;
-            
-            /* THIN BLACK BORDER - always visible */
-            outline: 2px solid #000;
-            outline-offset: -2px; /* makes the border sit exactly on the edge */
-            box-shadow: 0 0 0 1px #000; /* fallback for older browsers */
+
+            /* THIS IS THE KEY: Strong black stroke on the edges */
+            -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            outline: 4px solid #000;        /* thick black border */
+            outline-offset: -4px;
+            box-shadow: 0 0 0 4px #000;     /* ensures perfect black edge */
         }
 
         .ajira-hex:hover {
             background: red;
             color: white;
-            transform: translateY(-6px);
-            /* border stays black on hover too - looks sharp */
+            transform: translateY(-12px) scale(1.06);
+            z-index: 10;
         }
 
-        /* Central hexagon - no background, keep green text */
-        #ajira-central {
-            left: 35%;
-            top: 37%;
+        /* Central hexagon */
+        #central {
+            left: 33.5%;
+            top: 35.5%;
             background: transparent;
             color: #0b8c3a;
-            font-size: 5vw;
-            font-weight: 800;
+            font-size: 8.5vw;
+            font-weight: 900;
         }
 
-        #ajira-elearning  { left: 35%; top: 10%;    color: #0b8c3a; }
-        #ajira-train      { left: 5%;  top: 23.5%; }
-        #ajira-jobs       { left: 65%; top: 23.5%; }
-        #ajira-studio     { left: 5%;  top: 50.5%;  color: #0b8c3a; }
-        #ajira-comm       { left: 35%; top: 64%;    color: #0b8c3a; }
-        #ajira-centre     { left: 65%; top: 50.5%;  color: #0b8c3a; }
+        #elearning { left: 33.5%; top: 6%;    color: #0b8c3a; }
+        #trainings { left: 1%;   top: 21%; }
+        #jobs      { left: 66%;  top: 21%; }
+        #studios   { left: 1%;   top: 49%;  color: #0b8c3a; }
+        #community { left: 33.5%; top: 65%; color: #0b8c3a; }
+        #centres   { left: 66%;  top: 49%;  color: #0b8c3a; }
 
         /* Responsive */
-        @media (max-width: 640px) {
-            .ajira-hexagon-wrapper { max-width: 320px; height: 320px; }
-            .ajira-hex { font-size: 3.8vw; }
-            #ajira-central { font-size: 6.5vw; }
-        }
-        @media (max-width: 480px) {
-            .ajira-hexagon-wrapper { max-width: 260px; height: 260px; }
-            .ajira-hex { font-size: 4.2vw; }
-            #ajira-central { font-size: 7vw; }
-        }
-    </style>
-
-    <div class="ajira-hexagon-wrapper">
-        <div class="ajira-hex" id="ajira-central">AJIRA<br>DIGITAL</div>
-        <div class="ajira-hex" id="ajira-elearning">eLearning</div>
-        <div class="ajira-hex" id="ajira-train">Trainings</div>
-        <div class="ajira-hex" id="ajira-jobs">Jobs</div>
-        <div class="ajira-hex" id="ajira-studio">Studios</div>
-        <div class="ajira-hex" id="ajira-comm">Community...</div>
-        <div class="ajira-hex" id="ajira-centre">Centres</div>
-    </div>
-</div>
-<!-- ========== END OF HEXAGON SECTION ========== -->
+        @media (max-width: 768px) {
+            .ajira-wrapper { max-width: 440px; height: 440px; }
+            .ajira-hex { font-size: 5.8vw; }
+            #central { font-size: 10vw
 
             <!-- Our Process -->            
             <!--<section class="bg-color padding-bottom padding-top-x2">
