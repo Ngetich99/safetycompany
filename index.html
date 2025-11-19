@@ -234,11 +234,13 @@ Our team is made up of passionate, experienced professionals committed to equipp
             </div><!-- /container -->                   
             <!-- End Who We Are -->
            <!-- ========== START OF HEXAGON SECTION (paste this wherever you want) ========== -->
+<!-- ========== AJIRA HEXAGON SECTION WITH BLACK BORDER (paste anywhere) ========== -->
 <div class="ajira-hexagon-section">
     <style>
         .ajira-hexagon-section {
             padding: 60px 20px;
             text-align: center;
+            background: transparent; /* works on any background */
         }
 
         .ajira-hexagon-wrapper {
@@ -263,31 +265,38 @@ Our team is made up of passionate, experienced professionals committed to equipp
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             transition: all 0.3s ease;
             cursor: pointer;
+            
+            /* THIN BLACK BORDER - always visible */
+            outline: 2px solid #000;
+            outline-offset: -2px; /* makes the border sit exactly on the edge */
+            box-shadow: 0 0 0 1px #000; /* fallback for older browsers */
         }
 
         .ajira-hex:hover {
             background: red;
             color: white;
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            /* border stays black on hover too - looks sharp */
         }
 
+        /* Central hexagon - no background, keep green text */
         #ajira-central {
             left: 35%;
             top: 37%;
             background: transparent;
-            color: #0b8c3a;        /* Ajira green */
+            color: #0b8c3a;
             font-size: 5vw;
             font-weight: 800;
         }
 
-        #ajira-elearning  { left: 35%; top: 10%; color: #0b8c3a; }
-        #ajira-train { left: 5%;  top: 23.5%; }
-        #ajira-jobs  { left: 65%; top: 23.5%; }
-        #ajira-studio{ left: 5%;  top: 50.5%; color: #0b8c3a; }
-        #ajira-comm  { left: 35%; top: 64%;   color: #0b8c3a; }
-        #ajira-centre{ left: 65%; top: 50.5%; color: #0b8c3a; }
+        #ajira-elearning  { left: 35%; top: 10%;    color: #0b8c3a; }
+        #ajira-train      { left: 5%;  top: 23.5%; }
+        #ajira-jobs       { left: 65%; top: 23.5%; }
+        #ajira-studio     { left: 5%;  top: 50.5%;  color: #0b8c3a; }
+        #ajira-comm       { left: 35%; top: 64%;    color: #0b8c3a; }
+        #ajira-centre     { left: 65%; top: 50.5%;  color: #0b8c3a; }
 
-        /* Responsive scaling */
+        /* Responsive */
         @media (max-width: 640px) {
             .ajira-hexagon-wrapper { max-width: 320px; height: 320px; }
             .ajira-hex { font-size: 3.8vw; }
@@ -310,8 +319,7 @@ Our team is made up of passionate, experienced professionals committed to equipp
         <div class="ajira-hex" id="ajira-centre">Centres</div>
     </div>
 </div>
-<!-- ========== END OF HEXAGON SECTION ========== -->     
-         
+<!-- ========== END OF HEXAGON SECTION ========== -->
 
             <!-- Our Process -->            
             <!--<section class="bg-color padding-bottom padding-top-x2">
