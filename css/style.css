@@ -1675,3 +1675,75 @@ iframe{
 .tp-caption a{
 	color: #fff !important; 
 }
+/* ————— AJIRA HEXAGONS – BIG WITH BOLD BLACK BORDERS ————— */
+.ajira-hexagons-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.ajira-hexagons-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    height: 580px;
+    margin: 0 auto;
+}
+
+.ajira-hex {
+    position: absolute;
+    width: 33%;
+    height: 29%;
+    background: white;
+    color: #111;
+    font-weight: 800;
+    font-size: 5.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.2;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    /* Strong black border */
+    outline: 4px solid #000;
+    outline-offset: -4px;
+    box-shadow: 0 0 0 4px #000;
+}
+
+.ajira-hex:hover {
+    background: red;
+    color: white;
+    transform: translateY(-12px) scale(1.06);
+    z-index: 10;
+}
+
+/* Central hexagon */
+#ajira-central {
+    left: 33.5%;
+    top: 35.5%;
+    background: transparent;
+    color: #0b8c3a;
+    font-size: 8.5vw;
+    font-weight: 900;
+}
+
+/* Surrounding hexagons */
+#ajira-elearning  { left: 33.5%; top: 6%;    color: #0b8c3a; }
+#ajira-trainings  { left: 1%;    top: 21%; }
+#ajira-jobs       { left: 66%;   top: 21%; }
+#ajira-studios    { left: 1%;    top: 49%;   color: #0b8c3a; }
+#ajira-community  { left: 33.5%; top: 65%;   color: #0b8c3a; }
+#ajira-centres    { left: 66%;   top: 49%;   color: #0b8c3a; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ajira-hexagons-wrapper { max-width: 440px; height: 440px; }
+    .ajira-hex { font-size: 5.8vw; }
+    #ajira-central { font-size: 10vw; }
+}
+@media (max-width: 480px) {
+    .ajira-hexagons-wrapper { max-width: 340px; height: 340px; }
+    .ajira-hex { font-size: 6.2vw; }
+    #ajira-central { font-size: 11vw; }
+}
