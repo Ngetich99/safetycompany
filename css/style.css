@@ -587,6 +587,12 @@ a:focus {
 	padding-bottom: 200px;
 	background-size: cover;						
 }
+#aid{
+	background: url(../img/about/aid.jpg) 50% 0 no-repeat fixed;
+	padding-top: 200px;
+	padding-bottom: 200px;
+	background-size: cover;						
+}
 
 #fur{
 	background: url(../img/about/fur.jpg) 50% 0 no-repeat fixed;
