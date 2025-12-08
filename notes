@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Safety Training Materials</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff5f5;
+            margin: 0;
+            padding: 0;
+            color: #8b0000;
+        }
+        header {
+            background-color: #c62828;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        header img {
+            max-height: 80px;
+            margin-bottom: 15px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffe5e5;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        main p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .join-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #c62828;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .join-button:hover {
+            background-color: #b71c1c;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #8b0000;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Replace 'logo.png' with your actual logo file -->
+        <img src="logo.png" alt="Hazard Control Technologies Logo">
+        <h1>Fire Safety Training Materials</h1>
+        <p>Provided by Hazard Control Technologies</p>
+    </header>
+
+    <main>
+        <p>
+            These materials provide guidance on fire safety, prevention, and emergency response. 
+            They are designed for training purposes and can be used by employees, safety officers, and anyone interested in improving workplace safety.
+        </p>
+        
+        <a href="https://classroom.google.com/c/vd64hxg5" target="_blank" class="join-button">
+            Access Training Materials
+        </a>
+        
+        <p style="margin-top: 15px;">
+            Use the class code if prompted: <strong>vd64hxg5</strong>
+        </p>
+    </main>
+
+    <footer>
+        &copy; 2025 Hazard Control Technologies Limited. All rights reserved.
+    </footer>
+
+</body>
+</html>
