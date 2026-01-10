@@ -1681,4 +1681,17 @@ iframe{
 .tp-caption a{
 	color: #fff !important; 
 }
+/* Dropdown menu item hover */
+.dropdown-menu li a {
+  color: #000; /* normal text color */
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dropdown-menu li a:hover {
+  background-color: red; /* red hover */
+  color: #fff; /* white text on hover */
+}
 
