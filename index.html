@@ -333,6 +333,37 @@ Our team is made up of passionate, experienced professionals committed to equipp
             color: white;
             transform: translateY(-4px);
         }
+.ajira-hex {
+    position: absolute;
+    width: 30%;
+    height: 26%;
+    background: white;
+    color: #333;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    clip-path: polygon(
+        50% 0%, 100% 25%, 100% 75%,
+        50% 100%, 0% 75%, 0% 25%
+    );
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* 🔲 BLACK HEXAGON BORDER */
+.ajira-hex::before {
+    content: "";
+    position: absolute;
+    inset: -2px; /* border thickness */
+    background: black;
+    clip-path: polygon(
+        50% 0%, 100% 25%, 100% 75%,
+        50% 100%, 0% 75%, 0% 25%
+    );
+    z-index: -1;
+}
 
         #ajira-central {
             left: 35%;
