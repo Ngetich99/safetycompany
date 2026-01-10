@@ -331,35 +331,30 @@ Our team is made up of passionate, experienced professionals committed to equipp
                 50% 100%, 0% 75%, 0% 25%
             );
 
-            /* ✅ BLACK BORDER */
-            box-shadow: 0 0 0 2px black;
+            /* 🔴 THIN RED BORDER */
+            box-shadow: 0 0 0 1.5px red;
 
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .ajira-hex:hover {
-            background: red;
-            color: white;
             transform: translateY(-4px);
         }
 
-        /* Center hex (no border) */
         #ajira-central {
             left: 35%;
             top: 37%;
-            background: transparent;
-            box-shadow: none;
-            color: #0b8c3a;
+            background: white;
             font-size: 1vw;
             font-weight: 300;
         }
 
         #ajira-elearning { left: 35%; top: 10%; }
-        #ajira-train      { left: 5%;  top: 23.5%; }
-        #ajira-jobs       { left: 65%; top: 23.5%; }
-        #ajira-studio     { left: 5%;  top: 50.5%; }
-        #ajira-comm       { left: 35%; top: 64%; }
-        #ajira-centre     { left: 65%; top: 50.5%; }
+        #ajira-train     { left: 5%;  top: 23.5%; }
+        #ajira-jobs      { left: 65%; top: 23.5%; }
+        #ajira-studio    { left: 5%;  top: 50.5%; }
+        #ajira-comm      { left: 35%; top: 64%; }
+        #ajira-centre    { left: 65%; top: 50.5%; }
 
         /* Responsive */
         @media (max-width: 640px) {
@@ -390,10 +385,7 @@ Our team is made up of passionate, experienced professionals committed to equipp
     </style>
 
     <div class="ajira-hexagon-wrapper">
-        <div class="ajira-hex" id="ajira-central">
-            HAZARD<br>control
-        </div>
-
+        <div class="ajira-hex" id="ajira-central">HAZARD<br>control</div>
         <div class="ajira-hex" id="ajira-elearning">FIRST AID</div>
         <div class="ajira-hex" id="ajira-train">FIRE SAFETY</div>
         <div class="ajira-hex" id="ajira-jobs">OSHA AUDIT</div>
@@ -402,6 +394,8 @@ Our team is made up of passionate, experienced professionals committed to equipp
         <div class="ajira-hex" id="ajira-centre">FIRE SAFETY</div>
     </div>
 </div>
+<!-- ========== END OF HEXAGON SECTION ========== -->
+
 <!-- ========== END OF HEXAGON SECTION ========== -->
 
 <!-- ========== END OF HEXAGON SECTION ========== -->
