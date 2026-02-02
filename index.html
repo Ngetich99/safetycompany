@@ -929,26 +929,22 @@ Our team is made up of passionate, experienced professionals committed to equipp
                         <!-- Contact Form (name, email, phone and message inputs for your email form "should change your email adress in contact.php file") -->     
                         <div id="contact">                            
                             <div id="message"></div>
-                            <form>
-                                <fieldset>
+                            
                                     <div class="col-md-12">
-                                        <!-- Name -->
-                                        <input name="name" type="text" id="name" size="30" value="" placeholder="Name"/>
-                                        <br />
-                                        <!-- Email -->
-                                        <input name="email" type="text" id="email" size="30" value="" placeholder="Email"/>
-                                        <br /> 
-                                        <!-- Phone -->
-                                        <input name="phone" type="text" id="phone" size="30" value="" placeholder="Phone"/>
+                                     <form action="https://formspree.io/f/mjgopkoj" method="POST" id="contact-form">
 
-                                        <!-- Message -->                                                                        
-                                        <textarea name="comments" cols="40" rows="5" id="comments" placeholder="Message"></textarea>
-                                         
-                                        <!-- Submit Button -->                                        
-                                        <button type="submit" class="btn blog-btn submit" id="submit" value="Submit">Submit</button>
+                                    <input type="text" name="name" placeholder="Name" required>
+                                    <input type="email" name="email" placeholder="Email" required>
+                                    <textarea name="message" placeholder="Message" required></textarea>
+                                
+                                    <input type="hidden" name="_subject" value="New Contact – Hazard Control Technologies">
+                                    <input type="text" name="_gotcha" style="display:none">
+                                
+                                    <button type="submit">Send</button>
+                                
+                                </form>
                                     </div>                                                                                                                                                             
-                                </fieldset>
-                            </form>                            
+
                         </div>          
                         <!-- End Contact Form -->
                     </div>                    
