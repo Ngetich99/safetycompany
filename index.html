@@ -1036,9 +1036,68 @@ Our team is made up of passionate, experienced professionals committed to equipp
         <script src="js/jquery.mmenu.min.js"></script>                     
        <!--  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>      -->
         <script src="js/app.js"></script> 
-   <img src="img/fire_extinguisher_mascot_wave.gif" 
-     class="fire-mascot" 
+   <!-- 🧯 FIRE EXTINGUISHER MASCOT SYSTEM (ALL-IN-ONE) -->
+<style>
+  .fire-mascot {
+    position: fixed;
+    bottom: 20px;
+    left: -150px;
+    width: 120px;
+    z-index: 9999;
+    cursor: pointer;
+    animation: walkAcross 18s linear infinite;
+  }
+
+  @keyframes walkAcross {
+    0% { left: -150px; }
+    100% { left: 100%; }
+  }
+
+  .fire-mascot.wave {
+    animation: walkAcross 18s linear infinite, waveHand 1s ease-in-out 3;
+  }
+
+  @keyframes waveHand {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(8deg); }
+    50% { transform: rotate(-8deg); }
+    75% { transform: rotate(8deg); }
+    100% { transform: rotate(0deg); }
+  }
+</style>
+
+<img src="img/fire_extinguisher_mascot_wave.gif"
      id="fireMascot"
-     alt="Walking Fire Extinguisher">
+     class="fire-mascot"
+     alt="Fire Safety Mascot">
+
+<audio id="fireSound" src="sounds/fire-alarm.mp3" preload="auto"></audio>
+
+<script>
+(function() {
+  const mascot = document.getElementById("fireMascot");
+  const sound = document.getElementById("fireSound");
+
+  // show only on homepage
+  if (!(window.location.pathname.includes("index") || window.location.pathname === "/")) {
+    mascot.style.display = "none";
+    return;
+  }
+
+  // click interaction
+  mascot.addEventListener("click", function() {
+    sound.currentTime = 0;
+    sound.play();
+    alert("🔥 Safety Tip: Service your fire extinguisher every year!");
+  });
+
+  // waving on load
+  window.addEventListener("load", () => {
+    mascot.classList.add("wave");
+  });
+
+})();
+</script>
+<!-- END FIRE MASCOT -->
     </body>
 </html>
