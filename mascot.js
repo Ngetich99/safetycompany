@@ -2,7 +2,7 @@
 window.addEventListener("DOMContentLoaded", function () {
 
   const img = document.createElement("img");
-  img.src = "img/extinguisher.gif"; // <-- your exact file name
+  img.src = "img/firextinguisher.gif"; // <-- your exact file name
   img.id = "fireMascot";
   img.className = "fire-mascot";
 
