@@ -1037,66 +1037,43 @@ Our team is made up of passionate, experienced professionals committed to equipp
        <!--  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>      -->
         <script src="js/app.js"></script> 
    <!-- 🧯 FIRE EXTINGUISHER MASCOT SYSTEM (ALL-IN-ONE) -->
+<img src="your-mascot.gif" class="fire-mascot" id="fireMascot">
+
 <style>
   .fire-mascot {
     position: fixed;
     bottom: 20px;
-    left: -150px;
+    left: 100px;
     width: 120px;
     z-index: 9999;
     cursor: pointer;
-    animation: walkAcross 18s linear infinite;
-  }
-
-  @keyframes walkAcross {
-    0% { left: -150px; }
-    100% { left: 100%; }
-  }
-
-  .fire-mascot.wave {
-    animation: walkAcross 18s linear infinite, waveHand 1s ease-in-out 3;
-  }
-
-  @keyframes waveHand {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(8deg); }
-    50% { transform: rotate(-8deg); }
-    75% { transform: rotate(8deg); }
-    100% { transform: rotate(0deg); }
+    transition: left 0.3s ease, bottom 0.3s ease;
   }
 </style>
 
-<img src="img/fire_extinguisher_mascot_wave.gif"
-     id="fireMascot"
-     class="fire-mascot"
-     alt="Fire Safety Mascot">
-
-<audio id="fireSound" src="sounds/fire-alarm.mp3" preload="auto"></audio>
-
 <script>
-(function() {
   const mascot = document.getElementById("fireMascot");
-  const sound = document.getElementById("fireSound");
 
-  // show only on homepage
-  if (!(window.location.pathname.includes("index") || window.location.pathname === "/")) {
-    mascot.style.display = "none";
-    return;
-  }
+  document.addEventListener("mousemove", (e) => {
+    const rect = mascot.getBoundingClientRect();
 
-  // click interaction
-  mascot.addEventListener("click", function() {
-    sound.currentTime = 0;
-    sound.play();
-    alert("🔥 Safety Tip: Service your fire extinguisher every year! call 0727056087");
+    const mascotCenterX = rect.left + rect.width / 2;
+    const mascotCenterY = rect.top + rect.height / 2;
+
+    const distance = Math.sqrt(
+      Math.pow(e.clientX - mascotCenterX, 2) +
+      Math.pow(e.clientY - mascotCenterY, 2)
+    );
+
+    // If mouse comes within 120px → RUN!
+    if (distance < 120) {
+      const randomX = Math.random() * (window.innerWidth - 150);
+      const randomY = Math.random() * (window.innerHeight - 150);
+
+      mascot.style.left = randomX + "px";
+      mascot.style.bottom = (window.innerHeight - randomY - 150) + "px";
+    }
   });
-
-  // waving on load
-  window.addEventListener("load", () => {
-    mascot.classList.add("wave");
-  });
-
-})();
 </script>
 <!-- END FIRE MASCOT -->
     </body>
