@@ -1,3 +1,4 @@
+if (window.innerWidth > 768) {
 // Create mascot automatically on every page
 window.addEventListener("DOMContentLoaded", function () {
 
