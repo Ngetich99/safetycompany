@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technician Maintenance Portal</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #8B0000, #B22222, #FF0000);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+    }
+
+    .portal-container {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        width: 360px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    .logo-img {
+        width: 120px;
+        margin-bottom: 15px;
+    }
+
+    .company-name {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+        margin-bottom: 20px;
+        color: #ffcccc;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #ffcc00;
+        color: black;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    button:hover {
+        background: #ffaa00;
+        transform: scale(1.03);
+    }
+
+    .error {
+        margin-top: 12px;
+        color: #ff9999;
+        font-size: 14px;
+    }
+
+    .footer {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #ffd6d6;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="portal-container">
+
+    <!-- 🔴 LOGO IMAGE -->
+    <img src="logo.png" alt="Hazard Control Logo" class="logo-img">
+
+    <div class="company-name">HAZARD CONTROL TECHNOLOGIES LTD</div>
+    <div class="subtitle">Fire Safety & Maintenance Division</div>
+
+    <h2>Technician Access Portal</h2>
+
+    <input type="password" id="password" placeholder="Enter Access Code">
+    <button onclick="checkAccess()">Access Maintenance Sheet</button>
+
+    <div class="error" id="errorMsg"></div>
+
+    <div class="footer">Authorized Technicians Only</div>
+</div>
+
+<script>
+    function checkAccess() {
+        const password = document.getElementById("password").value;
+
+        const correctPassword = "HCT2025";
+        const googleLink = "https://docs.google.com/forms/d/YOUR-FORM-ID";
+
+        if (password === correctPassword) {
+            window.location.href = googleLink;
+        } else {
+            document.getElementById("errorMsg").innerText = "Incorrect access code. Contact admin.";
+        }
+    }
+</script>
+
+</body>
+</html>
