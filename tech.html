@@ -94,15 +94,15 @@
 
 <div class="portal-container">
 
-    <!-- 🔴 LOGO IMAGE -->
-    <img src="img/techlogo.png" alt="Hazard Control Logo" class="logo-img">
+    <!-- 🔴 CHANGE logo.png if needed -->
+    <img src="logo.png" alt="Hazard Control Logo" class="logo-img">
 
     <div class="company-name">HAZARD CONTROL TECHNOLOGIES LTD</div>
     <div class="subtitle">Fire Safety & Maintenance Division</div>
 
     <h2>Technician Access Portal</h2>
 
-    <input type="password" id="password" placeholder="enter password">
+    <input type="password" id="password" placeholder="Enter Access Code">
     <button onclick="checkAccess()">Access Maintenance Sheet</button>
 
     <div class="error" id="errorMsg"></div>
@@ -114,8 +114,8 @@
     function checkAccess() {
         const password = document.getElementById("password").value;
 
-        const correctPassword = "HCT2025";
-        const googleLink = "https://docs.google.com/forms/d/YOUR-FORM-ID";
+        const correctPassword = "HCT2025"; // Change if needed
+        const googleLink = "https://forms.gle/ye7oZhy9eGP9BXpcA";
 
         if (password === correctPassword) {
             window.location.href = googleLink;
@@ -126,8 +126,4 @@
 </script>
 
 </body>
-
 </html>
-
-
-
