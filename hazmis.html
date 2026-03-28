@@ -8,15 +8,12 @@
         * {
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background: #f0f2f5;
             margin: 0;
             padding: 0;
         }
-
-        /* HEADER with HAZMIS identity */
         .header {
             background: #b30000;
             color: white;
@@ -54,8 +51,6 @@
             font-size: 1rem;
             backdrop-filter: blur(2px);
         }
-
-        /* MAIN CONTAINER */
         .container {
             max-width: 1350px;
             margin: 35px auto;
@@ -64,8 +59,6 @@
             box-shadow: 0 20px 35px rgba(0,0,0,0.08);
             overflow: hidden;
         }
-
-        /* ---------- LOGIN SECTION (split layout with image) ---------- */
         .login-wrapper {
             display: flex;
             flex-direction: row;
@@ -177,8 +170,6 @@
             margin-top: 28px;
             color: #8c9aa8;
         }
-
-        /* DASHBOARD SECTION (hidden initially) */
         .dashboard-section {
             display: none;
             padding: 28px 32px;
@@ -188,7 +179,6 @@
             from { opacity: 0; transform: translateY(12px);}
             to { opacity: 1; transform: translateY(0);}
         }
-
         .dash-header {
             display: flex;
             justify-content: space-between;
@@ -232,8 +222,6 @@
             background: #ffe5e5;
             border-color: #b30000;
         }
-
-        /* KPI CARDS */
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -260,8 +248,6 @@
         }
         .status-ok { color: #1e7e34; font-weight: bold; }
         .status-warning { color: #c0392b; font-weight: bold; }
-
-        /* equipment mini cards */
         .equipment-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -285,7 +271,6 @@
             font-weight: 700;
             color: #b30000;
         }
-
         .section-title {
             font-size: 1.5rem;
             margin: 32px 0 16px 0;
@@ -293,7 +278,6 @@
             border-left: 5px solid #b30000;
             padding-left: 18px;
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -329,8 +313,6 @@
             background: #b30000;
             color: white;
         }
-
-        /* LOADER */
         .loader-popup {
             display: none;
             position: fixed;
@@ -360,8 +342,6 @@
             margin: 0 auto 18px auto;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        /* ERROR POPUP */
         .error-popup {
             display: none;
             position: fixed;
@@ -396,7 +376,6 @@
             margin-top: 18px;
             cursor: pointer;
         }
-
         @media (max-width: 780px) {
             .login-hero, .login-form-card { flex: auto; width: 100%; }
             .login-hero { border-right: none; border-bottom: 1px solid #ffe0e0; padding: 30px 20px; }
@@ -408,7 +387,7 @@
 </head>
 <body>
 
-<!-- LOADER (global) -->
+<!-- LOADER -->
 <div id="loaderPopup" class="loader-popup">
     <div class="loader-box">
         <div class="spinner"></div>
@@ -426,23 +405,21 @@
     </div>
 </div>
 
-<!-- HEADER with HAZMIS identity -->
+<!-- HEADER -->
 <div class="header">
     <div class="brand-left">
-        <img src="img/techlogo.png" alt="Hazard Control">
-        <h1><span style="font-weight:800;">HAZMIS PORTAL</span> </h1>
+        <img src="https://placehold.co/80x70?text=HCT" alt="Hazard Control">
+        <h1>HAZARD CONTROL · <span style="font-weight:800;">HAZMIS</span> Portal</h1>
     </div>
     <div class="hazmis-badge">⚙️ HAZMIS v2.0 | Client Hub</div>
 </div>
 
-<!-- MAIN CONTAINER (dynamic) -->
 <div class="container">
-    <!-- LOGIN SECTION (split with smiling image) -->
+    <!-- LOGIN SECTION -->
     <div id="loginSection" class="login-wrapper">
-        <!-- LEFT SIDE: smiling image + welcome to HAZMIS -->
         <div class="login-hero">
             <img class="smiling-image" 
-                 src="img/hazmis.jpg" 
+                 src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" 
                  alt="Smiling team member"
                  onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/4140/4140048.png';">
             <div class="welcome-message">
@@ -450,7 +427,6 @@
                 <p>Your intelligent safety & inspection companion<br> Smile — compliance made simple!</p>
             </div>
         </div>
-        <!-- RIGHT SIDE: login form -->
         <div class="login-form-card">
             <h3>🔐 Client access</h3>
             <div class="sub">Enter your registered email to view reports & certificates</div>
@@ -459,11 +435,13 @@
                 <input type="email" id="loginEmail" placeholder="client@hazardcontrol.com" autocomplete="email">
             </div>
             <button class="login-btn" id="loginBtn">➡️ Access Dashboard</button>
-            <div class="demo-note">🔒 Secure portal · Powered by HAZMIS</div>
+            <div class="demo-note">🔒 Secure portal · Powered by <a href="https://www.hazardsafetys.com" target="_blank" rel="noopener noreferrer">
+  Hazard Control Technologies</a>
+</div>
         </div>
     </div>
 
-    <!-- DASHBOARD SECTION (hidden initially) -->
+    <!-- DASHBOARD SECTION -->
     <div id="dashboardSection" class="dashboard-section">
         <div class="dash-header">
             <div class="dash-header-left">
@@ -476,34 +454,47 @@
         <!-- KPI CARDS -->
         <div class="dashboard-grid">
             <div class="card"><h3>✅ Compliance Status</h3><p id="compliance">--</p></div>
-            <div class="card"><h3>📊 Total Inspections</h3><p id="extinguishers">--</p></div>
+            <div class="card"><h3>📊 Total Inspections</h3><p id="totalInspections">--</p></div>
             <div class="card"><h3>⏳ Next Inspection</h3><p id="countdown">--</p></div>
         </div>
 
-        <!-- EQUIPMENT INVENTORY -->
-        <h3 class="section-title">🛠️ Equipment Inventory</h3>
+        <!-- EXTINGUISHER DETAILS (summed across all sites) -->
+        <h3 class="section-title">🧯 Extinguisher Inventory (Total across all branches)</h3>
+        <div class="equipment-grid" id="extinguisherGrid">
+            <div class="equipment-card"><h4>Water (9L)</h4><p id="water">--</p></div>
+            <div class="equipment-card"><h4>Foam (6L)</h4><p id="foam6">--</p></div>
+            <div class="equipment-card"><h4>Foam (9L)</h4><p id="foam9">--</p></div>
+            <div class="equipment-card"><h4>Powder (4kg)</h4><p id="powder4">--</p></div>
+            <div class="equipment-card"><h4>Powder (6kg)</h4><p id="powder6">--</p></div>
+            <div class="equipment-card"><h4>Powder (9kg)</h4><p id="powder9">--</p></div>
+            <div class="equipment-card"><h4>CO₂ (2kg)</h4><p id="co22">--</p></div>
+            <div class="equipment-card"><h4>CO₂ (5kg)</h4><p id="co25">--</p></div>
+            <div class="equipment-card"><h4>Fire Blankets</h4><p id="blanket">--</p></div>
+            <div class="equipment-card"><h4>🔥 Total Extinguishers</h4><p id="totalExt">--</p></div>
+        </div>
+
+        <!-- OTHER EQUIPMENT (summed across all sites) -->
+        <h3 class="section-title">🛠️ Other Safety Equipment (Total across all branches)</h3>
         <div class="equipment-grid">
-            <div class="equipment-card"><h4>🔥 Fire Extinguishers</h4><p id="fire_ext">--</p></div>
             <div class="equipment-card"><h4>🧯 Hose Reels</h4><p id="hose">--</p></div>
-            <div class="equipment-card"><h4>📡 Smoke Detectors</h4><p id="smoke">--</p></div>
-            <div class="equipment-card"><h4>🛡️ Fire Blankets</h4><p id="blanket">--</p></div>
-            <div class="equipment-card"><h4>💡 Emergency Lights</h4><p id="lights">--</p></div>
             <div class="equipment-card"><h4>🔔 Fire Alarms</h4><p id="alarms">--</p></div>
         </div>
 
         <!-- INSPECTION REPORTS TABLE -->
         <h3 class="section-title">📄 Inspection Reports</h3>
         <table id="reportsTable">
-            <thead><tr><th>Inspection Date</th><th>Site / Location</th><th>Report</th></thead>
+            <thead> …
+<th>Inspection Date</th><th>Site / Location</th><th>Report</th> </thead>
             <tbody></tbody>
-        </table>
+          </table>
 
         <!-- CERTIFICATES TABLE -->
         <h3 class="section-title">📜 Compliance Certificates</h3>
         <table id="certTable">
-            <thead><tr><th>Date</th><th>Site</th><th>Certificate</th></tr></thead>
+            <thead> …
+<th>Date</th><th>Site</th><th>Certificate</th> </thead>
             <tbody></tbody>
-        </table>
+          </table>
     </div>
 </div>
 
@@ -519,20 +510,32 @@
     const errorMsgSpan = document.getElementById('errorMessage');
     const welcomeGreetingSpan = document.getElementById('welcomeGreeting');
 
-    // dashboard fields
+    // KPI fields
     const complianceEl = document.getElementById('compliance');
-    const totalInspectionsEl = document.getElementById('extinguishers');
+    const totalInspectionsEl = document.getElementById('totalInspections');
     const countdownEl = document.getElementById('countdown');
-    const fireExtEl = document.getElementById('fire_ext');
-    const hoseEl = document.getElementById('hose');
-    const smokeEl = document.getElementById('smoke');
+
+    // Extinguisher fields
+    const waterEl = document.getElementById('water');
+    const foam6El = document.getElementById('foam6');
+    const foam9El = document.getElementById('foam9');
+    const powder4El = document.getElementById('powder4');
+    const powder6El = document.getElementById('powder6');
+    const powder9El = document.getElementById('powder9');
+    const co22El = document.getElementById('co22');
+    const co25El = document.getElementById('co25');
     const blanketEl = document.getElementById('blanket');
-    const lightsEl = document.getElementById('lights');
+    const totalExtEl = document.getElementById('totalExt');
+
+    // Other equipment
+    const hoseEl = document.getElementById('hose');
     const alarmsEl = document.getElementById('alarms');
+
+    // Tables
     const reportsTbody = document.querySelector('#reportsTable tbody');
     const certTbody = document.querySelector('#certTable tbody');
 
-    // helpers
+    // Helper functions
     function hideLoader() { loaderPopup.style.display = 'none'; }
     function showLoader() { loaderPopup.style.display = 'flex'; }
     function closeErrorPopup() { errorPopup.style.display = 'none'; }
@@ -547,11 +550,17 @@
         complianceEl.innerHTML = '--';
         totalInspectionsEl.innerHTML = '--';
         countdownEl.innerHTML = '--';
-        fireExtEl.innerHTML = '--';
-        hoseEl.innerHTML = '--';
-        smokeEl.innerHTML = '--';
+        waterEl.innerHTML = '--';
+        foam6El.innerHTML = '--';
+        foam9El.innerHTML = '--';
+        powder4El.innerHTML = '--';
+        powder6El.innerHTML = '--';
+        powder9El.innerHTML = '--';
+        co22El.innerHTML = '--';
+        co25El.innerHTML = '--';
         blanketEl.innerHTML = '--';
-        lightsEl.innerHTML = '--';
+        totalExtEl.innerHTML = '--';
+        hoseEl.innerHTML = '--';
         alarmsEl.innerHTML = '--';
         if (reportsTbody) reportsTbody.innerHTML = '';
         if (certTbody) certTbody.innerHTML = '';
@@ -568,26 +577,37 @@
         });
     }
 
-    // derive client name from email (local part) or from API data
     function getClientNameFromEmail(email) {
         let namePart = email.split('@')[0];
-        // replace dots and underscores with space, then capitalize each word
         namePart = namePart.replace(/[._]/g, ' ');
         namePart = namePart.replace(/\b\w/g, c => c.toUpperCase());
         return namePart;
     }
 
-    // populate dashboard with API data and set welcome message
-    function populateDashboard(data, email) {
-        if (!data || !Array.isArray(data) || data.length === 0) {
+    // Sort records by date descending (newest first) – used for tables and next inspection
+    function sortByDateDesc(data) {
+        return [...data].sort((a, b) => {
+            const dateA = a.date ? new Date(a.date) : new Date(0);
+            const dateB = b.date ? new Date(b.date) : new Date(0);
+            return dateB - dateA;
+        });
+    }
+
+    function populateDashboard(rawData, email) {
+        if (!rawData || !Array.isArray(rawData) || rawData.length === 0) {
             showErrorPopup("No inspection data returned. Please contact support.");
             return false;
         }
-        // clear tables
+
+        // Sort by date descending for tables and next inspection
+        const sorted = sortByDateDesc(rawData);
+
+        // Clear tables
         reportsTbody.innerHTML = '';
         certTbody.innerHTML = '';
 
-        data.forEach(record => {
+        // Populate tables with all records (sorted)
+        sorted.forEach(record => {
             let displayDate = '—';
             if (record.date) {
                 try {
@@ -602,7 +622,7 @@
             reportRow.innerHTML = `
                 <td>${escapeHtml(displayDate)}</td>
                 <td>${escapeHtml(siteName)}</td>
-                <td>${reportLink !== '#' ? `<a class="download" href="${escapeHtml(reportLink)}" target="_blank" rel="noopener">📎 Download Report</a>` : '<span class="text-muted">N/A</span>'}</td>
+                <td>${reportLink !== '#' ? `<a class="download" href="${escapeHtml(reportLink)}" target="_blank" rel="noopener">📎 View Report</a>` : '<span class="text-muted">N/A</span>'}</td>
             `;
             reportsTbody.appendChild(reportRow);
 
@@ -610,27 +630,60 @@
             certRow.innerHTML = `
                 <td>${escapeHtml(displayDate)}</td>
                 <td>${escapeHtml(siteName)}</td>
-                <td>${certLink !== '#' ? `<a class="download" href="${escapeHtml(certLink)}" target="_blank" rel="noopener">📜 Download Certificate</a>` : '<span class="text-muted">N/A</span>'}</td>
+                <td>${certLink !== '#' ? `<a class="download" href="${escapeHtml(certLink)}" target="_blank" rel="noopener">📜 View Certificate</a>` : '<span class="text-muted">N/A</span>'}</td>
             `;
             certTbody.appendChild(certRow);
         });
 
-        // total inspections
-        const total = data.length;
-        totalInspectionsEl.innerHTML = total;
+        totalInspectionsEl.innerHTML = sorted.length;
 
-        // equipment (first record)
-        const first = data[0] || {};
-        fireExtEl.innerHTML = (first.extinguishers !== undefined && first.extinguishers !== null) ? first.extinguishers : '0';
-        hoseEl.innerHTML = (first.hose !== undefined && first.hose !== null) ? first.hose : '0';
-        smokeEl.innerHTML = (first.smoke !== undefined && first.smoke !== null) ? first.smoke : '0';
-        blanketEl.innerHTML = (first.blanket !== undefined && first.blanket !== null) ? first.blanket : '0';
-        lightsEl.innerHTML = (first.lights !== undefined && first.lights !== null) ? first.lights : '0';
-        alarmsEl.innerHTML = (first.alarms !== undefined && first.alarms !== null) ? first.alarms : '0';
+        // ----- SUMMING across ALL records -----
+        let sums = {
+            water: 0, foam6: 0, foam9: 0,
+            powder4: 0, powder6: 0, powder9: 0,
+            co22: 0, co25: 0,
+            blanket: 0,
+            hose: 0,
+            alarms: 0
+        };
 
-        // Next inspection countdown (6 months after last inspection)
+        rawData.forEach(record => {
+            sums.water += Number(record.water) || 0;
+            sums.foam6 += Number(record.foam6) || 0;
+            sums.foam9 += Number(record.foam9) || 0;
+            sums.powder4 += Number(record.powder4) || 0;
+            sums.powder6 += Number(record.powder6) || 0;
+            sums.powder9 += Number(record.powder9) || 0;
+            sums.co22 += Number(record.co22) || 0;
+            sums.co25 += Number(record.co25) || 0;
+            sums.blanket += Number(record.blanket) || 0;
+            sums.hose += Number(record.hose) || 0;
+            sums.alarms += Number(record.alarms) || 0;
+        });
+
+        const totalExt = sums.water + sums.foam6 + sums.foam9 +
+                         sums.powder4 + sums.powder6 + sums.powder9 +
+                         sums.co22 + sums.co25;
+
+        // Update extinguisher display
+        waterEl.innerHTML = sums.water;
+        foam6El.innerHTML = sums.foam6;
+        foam9El.innerHTML = sums.foam9;
+        powder4El.innerHTML = sums.powder4;
+        powder6El.innerHTML = sums.powder6;
+        powder9El.innerHTML = sums.powder9;
+        co22El.innerHTML = sums.co22;
+        co25El.innerHTML = sums.co25;
+        blanketEl.innerHTML = sums.blanket;
+        totalExtEl.innerHTML = totalExt;
+
+        // Other equipment
+        hoseEl.innerHTML = sums.hose;
+        alarmsEl.innerHTML = sums.alarms;
+
+        // Next inspection countdown (based on most recent date)
         let lastDate = null;
-        const validDates = data.map(r => r.date ? new Date(r.date) : null).filter(d => d && !isNaN(d));
+        const validDates = sorted.map(r => r.date ? new Date(r.date) : null).filter(d => d && !isNaN(d));
         if (validDates.length) {
             validDates.sort((a,b) => b - a);
             lastDate = validDates[0];
@@ -652,10 +705,10 @@
             complianceEl.innerHTML = '<span class="status-warning">🔴 INSPECTION OVERDUE</span>';
         }
 
-        // Set welcome message: use clientName from API if available, otherwise derive from email
+        // Welcome message
         let clientName = '';
-        if (first.clientName && first.clientName.trim() !== '') {
-            clientName = first.clientName;
+        if (sorted[0] && sorted[0].clientName && sorted[0].clientName.trim() !== '') {
+            clientName = sorted[0].clientName;
         } else if (email) {
             clientName = getClientNameFromEmail(email);
         } else {
@@ -666,7 +719,6 @@
         return true;
     }
 
-    // LOGIN + FETCH with loader separation
     let isLogging = false;
     async function handleLoginAndFetch() {
         if (isLogging) return;
@@ -683,7 +735,8 @@
         isLogging = true;
         showLoader();
 
-        const scriptUrl = "https://script.google.com/macros/s/AKfycbwnMaF98cfCM4PnhlbpsL3qtasMpGhQKOBP-cGI9I79UqD2t3xgQqipKGJmApB8NlYS/exec";
+        // ⚠️ USE YOUR DEPLOYED WEB APP URL HERE ⚠️
+        const scriptUrl = "https://script.google.com/macros/s/AKfycbx3tC4Ig8k0DsW_8oD8IJYXmXdgNDnzdf-JHwv5kf9M3ZlQIV4DLhoPwZCersFqXvyYtA/exec";
         const url = `${scriptUrl}?email=${encodeURIComponent(email)}`;
 
         try {
@@ -699,10 +752,8 @@
                 return;
             }
 
-            // SUCCESS: populate & switch UI
             const success = populateDashboard(data, email);
             if (success) {
-                // hide login, show dashboard
                 loginSection.style.display = 'none';
                 dashboardSection.style.display = 'block';
                 errorPopup.style.display = 'none';
@@ -718,10 +769,9 @@
         }
     }
 
-    // LOGOUT action
     function handleLogout() {
         dashboardSection.style.display = 'none';
-        loginSection.style.display = 'flex';    // back to split layout
+        loginSection.style.display = 'flex';
         loginEmailInput.value = '';
         resetDashboardPlaceholders();
         hideLoader();
@@ -729,18 +779,15 @@
         isLogging = false;
     }
 
-    // attach events
     loginBtn.addEventListener('click', handleLoginAndFetch);
     logoutBtn.addEventListener('click', handleLogout);
     loginEmailInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLoginAndFetch(); });
 
-    // initial state
     loginSection.style.display = 'flex';
     dashboardSection.style.display = 'none';
     resetDashboardPlaceholders();
     hideLoader();
 
-    // click outside error popup to close
     errorPopup.addEventListener('click', (e) => { if (e.target === errorPopup) closeErrorPopup(); });
 </script>
 </body>
