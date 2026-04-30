@@ -337,7 +337,7 @@
             border-top: 5px solid #b30000;
             border-radius: 50%;
             width: 54px;
-            height: 54px;
+            height: 54px; 
             animation: spin 0.9s linear infinite;
             margin: 0 auto 18px auto;
         }
@@ -592,7 +592,30 @@
             return dateB - dateA;
         });
     }
+function startCountdown(targetDate) {
 
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const target = new Date(targetDate).getTime();
+        const diff = target - now;
+
+        if (diff <= 0) {
+            countdownEl.innerHTML = "🔴 Inspection Overdue";
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        countdownEl.innerHTML =
+            `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
     function populateDashboard(rawData, email) {
         if (!rawData || !Array.isArray(rawData) || rawData.length === 0) {
             showErrorPopup("No inspection data returned. Please contact support.");
@@ -692,10 +715,11 @@
         }
         const nextInsp = new Date(lastDate);
         nextInsp.setMonth(nextInsp.getMonth() + 6);
+        startCountdown(nextInsp);
         const today = new Date();
-        today.setHours(0,0,0,0);
-        const diffDays = Math.ceil((nextInsp - today) / (1000 * 60 * 60 * 24));
-        countdownEl.innerHTML = diffDays > 0 ? `${diffDays} days remaining` : (diffDays === 0 ? "Due today" : `Overdue by ${Math.abs(diffDays)} days`);
+today.setHours(0,0,0,0);
+
+const diffDays = Math.ceil((nextInsp - today) / (1000 * 60 * 60 * 24));
 
         if (diffDays > 0) {
             complianceEl.innerHTML = '<span class="status-ok">✅ COMPLIANT</span>';
