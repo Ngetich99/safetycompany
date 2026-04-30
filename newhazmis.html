@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>HAZMIS · Hazard Control Client Portal</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: #b30000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 12px 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .brand-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .header img {
+            height: 55px;
+            background: white;
+            border-radius: 12px;
+            object-fit: contain;
+            padding: 4px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+        .hazmis-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            backdrop-filter: blur(2px);
+        }
+        .container {
+            max-width: 1350px;
+            margin: 35px auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .login-wrapper {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            min-height: 540px;
+        }
+        .login-hero {
+            flex: 1.2;
+            background: linear-gradient(135deg, #fff8f0 0%, #fff0f0 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 30px;
+            text-align: center;
+            border-right: 1px solid #ffe0e0;
+        }
+        .smiling-image {
+            max-width: 260px;
+            width: 80%;
+            border-radius: 50%;
+            box-shadow: 0 20px 30px rgba(179,0,0,0.15);
+            transition: transform 0.2s;
+            background: #fff0f0;
+            padding: 8px;
+        }
+        .smiling-image:hover {
+            transform: scale(1.02);
+        }
+        .welcome-message {
+            margin-top: 30px;
+        }
+        .welcome-message h2 {
+            font-size: 2.1rem;
+            color: #b30000;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+        .welcome-message p {
+            color: #4a5562;
+            font-size: 1rem;
+            max-width: 280px;
+            margin: 10px auto 0;
+        }
+        .login-form-card {
+            flex: 1;
+            background: white;
+            padding: 48px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .login-form-card h3 {
+            font-size: 1.8rem;
+            margin: 0 0 8px 0;
+            color: #1e2a3a;
+        }
+        .login-form-card .sub {
+            color: #5f6c7a;
+            margin-bottom: 32px;
+            border-left: 3px solid #b30000;
+            padding-left: 12px;
+        }
+        .input-group {
+            margin-bottom: 24px;
+        }
+        .input-group label {
+            font-weight: 600;
+            color: #2c3e44;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #cfdde6;
+            border-radius: 48px;
+            font-size: 1rem;
+            transition: 0.2s;
+            background: #fefefe;
+        }
+        .input-group input:focus {
+            border-color: #b30000;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(179,0,0,0.15);
+        }
+        .login-btn {
+            background: #b30000;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .login-btn:hover {
+            background: #8b0000;
+            transform: translateY(-1px);
+        }
+        .demo-note {
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 28px;
+            color: #8c9aa8;
+        }
+        .dashboard-section {
+            display: none;
+            padding: 28px 32px;
+            animation: fadeSlide 0.4s ease-out;
+        }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(12px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f3e2e2;
+            padding-bottom: 12px;
+        }
+        .dash-header-left {
+            display: flex;
+            flex-direction: column;
+        }
+        .dash-header-left h2 {
+            margin: 0;
+            color: #b30000;
+            font-weight: 800;
+            font-size: 1.9rem;
+        }
+        .welcome-greeting {
+            font-size: 1rem;
+            color: #2c3e50;
+            margin-top: 6px;
+            font-weight: 500;
+            background: #fef5f5;
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 30px;
+        }
+        .logout-button {
+            background: #f3f4f6;
+            border: 1px solid #d1d9e6;
+            color: #b30000;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .logout-button:hover {
+            background: #ffe5e5;
+            border-color: #b30000;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: #fffbfb;
+            padding: 18px 22px;
+            border-radius: 24px;
+            border-left: 6px solid #b30000;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.02);
+        }
+        .card h3 {
+            margin: 0 0 12px 0;
+            color: #b30000;
+            font-weight: 700;
+        }
+        .card p {
+            margin: 0;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #1e2a3a;
+        }
+        .status-ok { color: #1e7e34; font-weight: bold; }
+        .status-warning { color: #c0392b; font-weight: bold; }
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+        .equipment-card {
+            background: #f9f9fe;
+            padding: 14px 18px;
+            border-radius: 20px;
+            border-bottom: 2px solid #e9eef3;
+        }
+        .equipment-card h4 {
+            margin: 0 0 8px 0;
+            font-weight: 600;
+            color: #2c3e66;
+        }
+        .equipment-card p {
+            margin: 0;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #b30000;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            margin: 32px 0 16px 0;
+            font-weight: 700;
+            border-left: 5px solid #b30000;
+            padding-left: 18px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        th {
+            background: #b30000;
+            color: white;
+            padding: 14px 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eceff5;
+            background: white;
+        }
+        .download {
+            color: #b30000;
+            font-weight: 600;
+            text-decoration: none;
+            background: #fff0f0;
+            padding: 6px 16px;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        .download:hover {
+            background: #b30000;
+            color: white;
+        }
+        .loader-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.75);
+            justify-content: center;
+            align-items: center;
+            z-index: 1100;
+            backdrop-filter: blur(4px);
+        }
+        .loader-box {
+            background: white;
+            padding: 32px 44px;
+            border-radius: 44px;
+            text-align: center;
+        }
+        .spinner {
+            border: 5px solid #f0e9e9;
+            border-top: 5px solid #b30000;
+            border-radius: 50%;
+            width: 54px;
+            height: 54px;
+            animation: spin 0.9s linear infinite;
+            margin: 0 auto 18px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .error-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1200;
+        }
+        .error-box {
+            background: white;
+            padding: 28px 36px;
+            border-radius: 32px;
+            text-align: center;
+            border-left: 8px solid #b30000;
+            max-width: 360px;
+        }
+        .error-box h3 {
+            margin-top: 0;
+            color: #b30000;
+        }
+        .error-box button {
+            background: #b30000;
+            border: none;
+            color: white;
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-weight: bold;
+            margin-top: 18px;
+            cursor: pointer;
+        }
+        @media (max-width: 780px) {
+            .login-hero, .login-form-card { flex: auto; width: 100%; }
+            .login-hero { border-right: none; border-bottom: 1px solid #ffe0e0; padding: 30px 20px; }
+            .container { margin: 20px; }
+            .dashboard-section { padding: 20px; }
+        }
+        .text-muted { color: #6c7a89; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loaderPopup" class="loader-popup">
+    <div class="loader-box">
+        <div class="spinner"></div>
+        <p style="font-weight:600;">🔄 Loading your HAZMIS dashboard ...</p>
+        <span class="text-muted">fetching inspection & maintainace data</span>
+    </div>
+</div>
+
+<!-- ERROR MODAL -->
+<div id="errorPopup" class="error-popup">
+    <div class="error-box">
+        <h3>🔒 Access Denied</h3>
+        <p id="errorMessage">Email not found in HAZMIS records.</p>
+        <button onclick="closeErrorPopup()">Try again</button>
+    </div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="brand-left">
+        <img src="img/techlogo.png" alt="Hazard Control">
+        <h1><span style="font-weight:800;">HAZMIS PORTAL</span> </h1>
+    </div>
+    <div class="hazmis-badge">⚙️ HAZMIS v2.0 | Client Hub</div>
+</div>
+
+<div class="container">
+    <!-- LOGIN SECTION -->
+    <div id="loginSection" class="login-wrapper">
+        <div class="login-hero">
+            <img class="smiling-image" 
+                 src="img/hazmis.jpg" 
+                 alt="Smiling team member"
+                 onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/4140/4140048.png';">
+            <div class="welcome-message">
+                <h2>✨ Welcome to HAZMIS</h2>
+                <p>Your intelligent safety & inspection companion<br> Smile — compliance made simple!</p>
+            </div>
+        </div>
+        <div class="login-form-card">
+            <h3>🔐 Client access</h3>
+            <div class="sub">Enter your registered email to view reports & certificates</div>
+            <div class="input-group">
+                <label>📧 Email address</label>
+                <input type="email" id="loginEmail" placeholder="client@hazardcontrol.com" autocomplete="email">
+            </div>
+            <button class="login-btn" id="loginBtn">➡️ Access Dashboard</button>
+            <div class="demo-note">🔒 Secure portal · Powered by <a href="https://www.hazardsafetys.com" target="_blank" rel="noopener noreferrer">
+  Hazard Control Technologies</a>
+</div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD SECTION -->
+    <div id="dashboardSection" class="dashboard-section">
+        <div class="dash-header">
+            <div class="dash-header-left">
+                <h2>📋 HAZMIS Dashboard</h2>
+                <div class="welcome-greeting" id="welcomeGreeting">Welcome, Guest</div>
+            </div>
+            <button class="logout-button" id="logoutBtn">🚪 Logout</button>
+        </div>
+
+        <!-- KPI CARDS -->
+        <div class="dashboard-grid">
+            <div class="card"><h3>✅ Compliance Status</h3><p id="compliance">--</p></div>
+            <div class="card"><h3>📊 Total Inspections</h3><p id="totalInspections">--</p></div>
+            <div class="card"><h3>⏳ Next Inspection</h3><p id="countdown">--</p></div>
+        </div>
+
+        <!-- EXTINGUISHER DETAILS (summed across all sites) -->
+        <h3 class="section-title">🧯 Extinguisher Inventory (Total across all branches)</h3>
+        <div class="equipment-grid" id="extinguisherGrid">
+            <div class="equipment-card"><h4>Water (9L)</h4><p id="water">--</p></div>
+            <div class="equipment-card"><h4>Foam (6L)</h4><p id="foam6">--</p></div>
+            <div class="equipment-card"><h4>Foam (9L)</h4><p id="foam9">--</p></div>
+            <div class="equipment-card"><h4>Powder (4kg)</h4><p id="powder4">--</p></div>
+            <div class="equipment-card"><h4>Powder (6kg)</h4><p id="powder6">--</p></div>
+            <div class="equipment-card"><h4>Powder (9kg)</h4><p id="powder9">--</p></div>
+            <div class="equipment-card"><h4>CO₂ (2kg)</h4><p id="co22">--</p></div>
+            <div class="equipment-card"><h4>CO₂ (5kg)</h4><p id="co25">--</p></div>
+            <div class="equipment-card"><h4>Fire Blankets</h4><p id="blanket">--</p></div>
+            <div class="equipment-card"><h4>🔥 Total Extinguishers</h4><p id="totalExt">--</p></div>
+        </div>
+
+        <!-- OTHER EQUIPMENT (summed across all sites) -->
+        <h3 class="section-title">🛠️ Other Safety Equipment (Total across all branches)</h3>
+        <div class="equipment-grid">
+            <div class="equipment-card"><h4>🧯 Hose Reels</h4><p id="hose">--</p></div>
+            <div class="equipment-card"><h4>🔔 Fire Alarms</h4><p id="alarms">--</p></div>
+        </div>
+
+        <!-- INSPECTION REPORTS TABLE -->
+        <h3 class="section-title">📄 Inspection Reports</h3>
+        <table id="reportsTable">
+            <thead> …
+<th>Inspection Date</th><th>Site / Location</th><th>Report</th> </thead>
+            <tbody></tbody>
+          </table>
+
+        <!-- CERTIFICATES TABLE -->
+        <h3 class="section-title">📜 Compliance Certificates</h3>
+        <table id="certTable">
+            <thead> …
+<th>Date</th><th>Site</th><th>Certificate</th> </thead>
+            <tbody></tbody>
+          </table>
+    </div>
+</div>
+
+<script>
+    // DOM elements
+    const loginSection = document.getElementById('loginSection');
+    const dashboardSection = document.getElementById('dashboardSection');
+    const loginEmailInput = document.getElementById('loginEmail');
+    const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const loaderPopup = document.getElementById('loaderPopup');
+    const errorPopup = document.getElementById('errorPopup');
+    const errorMsgSpan = document.getElementById('errorMessage');
+    const welcomeGreetingSpan = document.getElementById('welcomeGreeting');
+
+    // KPI fields
+    const complianceEl = document.getElementById('compliance');
+    const totalInspectionsEl = document.getElementById('totalInspections');
+    const countdownEl = document.getElementById('countdown');
+
+    // Extinguisher fields
+    const waterEl = document.getElementById('water');
+    const foam6El = document.getElementById('foam6');
+    const foam9El = document.getElementById('foam9');
+    const powder4El = document.getElementById('powder4');
+    const powder6El = document.getElementById('powder6');
+    const powder9El = document.getElementById('powder9');
+    const co22El = document.getElementById('co22');
+    const co25El = document.getElementById('co25');
+    const blanketEl = document.getElementById('blanket');
+    const totalExtEl = document.getElementById('totalExt');
+
+    // Other equipment
+    const hoseEl = document.getElementById('hose');
+    const alarmsEl = document.getElementById('alarms');
+
+    // Tables
+    const reportsTbody = document.querySelector('#reportsTable tbody');
+    const certTbody = document.querySelector('#certTable tbody');
+
+    // Helper functions
+    function hideLoader() { loaderPopup.style.display = 'none'; }
+    function showLoader() { loaderPopup.style.display = 'flex'; }
+    function closeErrorPopup() { errorPopup.style.display = 'none'; }
+    window.closeErrorPopup = closeErrorPopup;
+
+    function showErrorPopup(msg) {
+        errorMsgSpan.innerText = msg || 'Email not found in HAZMIS inspection records.';
+        errorPopup.style.display = 'flex';
+    }
+
+    function resetDashboardPlaceholders() {
+        complianceEl.innerHTML = '--';
+        totalInspectionsEl.innerHTML = '--';
+        countdownEl.innerHTML = '--';
+        waterEl.innerHTML = '--';
+        foam6El.innerHTML = '--';
+        foam9El.innerHTML = '--';
+        powder4El.innerHTML = '--';
+        powder6El.innerHTML = '--';
+        powder9El.innerHTML = '--';
+        co22El.innerHTML = '--';
+        co25El.innerHTML = '--';
+        blanketEl.innerHTML = '--';
+        totalExtEl.innerHTML = '--';
+        hoseEl.innerHTML = '--';
+        alarmsEl.innerHTML = '--';
+        if (reportsTbody) reportsTbody.innerHTML = '';
+        if (certTbody) certTbody.innerHTML = '';
+        welcomeGreetingSpan.innerText = 'Welcome, Guest';
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function getClientNameFromEmail(email) {
+        let namePart = email.split('@')[0];
+        namePart = namePart.replace(/[._]/g, ' ');
+        namePart = namePart.replace(/\b\w/g, c => c.toUpperCase());
+        return namePart;
+    }
+
+    // Sort records by date descending (newest first) – used for tables and next inspection
+    function sortByDateDesc(data) {
+        return [...data].sort((a, b) => {
+            const dateA = a.date ? new Date(a.date) : new Date(0);
+            const dateB = b.date ? new Date(b.date) : new Date(0);
+            return dateB - dateA;
+        });
+    }
+
+    function populateDashboard(rawData, email) {
+        if (!rawData || !Array.isArray(rawData) || rawData.length === 0) {
+            showErrorPopup("No inspection data returned. Please contact support.");
+            return false;
+        }
+
+        // Sort by date descending for tables and next inspection
+        const sorted = sortByDateDesc(rawData);
+
+        // Clear tables
+        reportsTbody.innerHTML = '';
+        certTbody.innerHTML = '';
+
+        // Populate tables with all records (sorted)
+        sorted.forEach(record => {
+            let displayDate = '—';
+            if (record.date) {
+                try {
+                    displayDate = new Date(record.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+                } catch(e) { displayDate = record.date; }
+            }
+            const siteName = record.site || 'Main facility';
+            const reportLink = record.report || '#';
+            const certLink = record.certificate || '#';
+
+            const reportRow = document.createElement('tr');
+            reportRow.innerHTML = `
+                <td>${escapeHtml(displayDate)}</td>
+                <td>${escapeHtml(siteName)}</td>
+                <td>${reportLink !== '#' ? `<a class="download" href="${escapeHtml(reportLink)}" target="_blank" rel="noopener">📎 View Report</a>` : '<span class="text-muted">N/A</span>'}</td>
+            `;
+            reportsTbody.appendChild(reportRow);
+
+            const certRow = document.createElement('tr');
+            certRow.innerHTML = `
+                <td>${escapeHtml(displayDate)}</td>
+                <td>${escapeHtml(siteName)}</td>
+                <td>${certLink !== '#' ? `<a class="download" href="${escapeHtml(certLink)}" target="_blank" rel="noopener">📜 View Certificate</a>` : '<span class="text-muted">N/A</span>'}</td>
+            `;
+            certTbody.appendChild(certRow);
+        });
+
+        totalInspectionsEl.innerHTML = sorted.length;
+
+        // ----- SUMMING across ALL records -----
+        let sums = {
+            water: 0, foam6: 0, foam9: 0,
+            powder4: 0, powder6: 0, powder9: 0,
+            co22: 0, co25: 0,
+            blanket: 0,
+            hose: 0,
+            alarms: 0
+        };
+
+        rawData.forEach(record => {
+            sums.water += Number(record.water) || 0;
+            sums.foam6 += Number(record.foam6) || 0;
+            sums.foam9 += Number(record.foam9) || 0;
+            sums.powder4 += Number(record.powder4) || 0;
+            sums.powder6 += Number(record.powder6) || 0;
+            sums.powder9 += Number(record.powder9) || 0;
+            sums.co22 += Number(record.co22) || 0;
+            sums.co25 += Number(record.co25) || 0;
+            sums.blanket += Number(record.blanket) || 0;
+            sums.hose += Number(record.hose) || 0;
+            sums.alarms += Number(record.alarms) || 0;
+        });
+
+        const totalExt = sums.water + sums.foam6 + sums.foam9 +
+                         sums.powder4 + sums.powder6 + sums.powder9 +
+                         sums.co22 + sums.co25;
+
+        // Update extinguisher display
+        waterEl.innerHTML = sums.water;
+        foam6El.innerHTML = sums.foam6;
+        foam9El.innerHTML = sums.foam9;
+        powder4El.innerHTML = sums.powder4;
+        powder6El.innerHTML = sums.powder6;
+        powder9El.innerHTML = sums.powder9;
+        co22El.innerHTML = sums.co22;
+        co25El.innerHTML = sums.co25;
+        blanketEl.innerHTML = sums.blanket;
+        totalExtEl.innerHTML = totalExt;
+
+        // Other equipment
+        hoseEl.innerHTML = sums.hose;
+        alarmsEl.innerHTML = sums.alarms;
+
+        // Next inspection countdown (based on most recent date)
+        let lastDate = null;
+        const validDates = sorted.map(r => r.date ? new Date(r.date) : null).filter(d => d && !isNaN(d));
+        if (validDates.length) {
+            validDates.sort((a,b) => b - a);
+            lastDate = validDates[0];
+        } else {
+            lastDate = new Date();
+        }
+        const nextInsp = new Date(lastDate);
+        nextInsp.setMonth(nextInsp.getMonth() + 6);
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const diffDays = Math.ceil((nextInsp - today) / (1000 * 60 * 60 * 24));
+        countdownEl.innerHTML = diffDays > 0 ? `${diffDays} days remaining` : (diffDays === 0 ? "Due today" : `Overdue by ${Math.abs(diffDays)} days`);
+
+        if (diffDays > 0) {
+            complianceEl.innerHTML = '<span class="status-ok">✅ COMPLIANT</span>';
+        } else if (diffDays === 0) {
+            complianceEl.innerHTML = '<span class="status-warning">⚠️ DUE TODAY</span>';
+        } else {
+            complianceEl.innerHTML = '<span class="status-warning">🔴 INSPECTION OVERDUE</span>';
+        }
+
+        // Welcome message
+        let clientName = '';
+        if (sorted[0] && sorted[0].clientName && sorted[0].clientName.trim() !== '') {
+            clientName = sorted[0].clientName;
+        } else if (email) {
+            clientName = getClientNameFromEmail(email);
+        } else {
+            clientName = 'Valued Client';
+        }
+        welcomeGreetingSpan.innerText = `👋 Welcome, ${clientName}`;
+
+        return true;
+    }
+
+    let isLogging = false;
+    async function handleLoginAndFetch() {
+        if (isLogging) return;
+        const email = loginEmailInput.value.trim();
+        if (!email) {
+            alert("📧 Please enter your registered email address");
+            return;
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+            alert("Please enter a valid email address (e.g., name@company.com)");
+            return;
+        }
+
+        isLogging = true;
+        showLoader();
+
+        // ⚠️ USE YOUR DEPLOYED WEB APP URL HERE ⚠️
+        const scriptUrl = "https://script.google.com/macros/s/AKfycbx3tC4Ig8k0DsW_8oD8IJYXmXdgNDnzdf-JHwv5kf9M3ZlQIV4DLhoPwZCersFqXvyYtA/exec";
+        const url = `${scriptUrl}?email=${encodeURIComponent(email)}`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+
+            hideLoader();
+
+            if (!data || !Array.isArray(data) || data.length === 0) {
+                showErrorPopup("Email not found · No inspection records linked to this address in HAZMIS.");
+                isLogging = false;
+                return;
+            }
+
+            const success = populateDashboard(data, email);
+            if (success) {
+                loginSection.style.display = 'none';
+                dashboardSection.style.display = 'block';
+                errorPopup.style.display = 'none';
+            } else {
+                showErrorPopup("Could not load dashboard data.");
+            }
+        } catch (err) {
+            console.error(err);
+            hideLoader();
+            showErrorPopup("Network error · Unable to reach HAZMIS server. Please try again.");
+        } finally {
+            isLogging = false;
+        }
+    }
+
+    function handleLogout() {
+        dashboardSection.style.display = 'none';
+        loginSection.style.display = 'flex';
+        loginEmailInput.value = '';
+        resetDashboardPlaceholders();
+        hideLoader();
+        errorPopup.style.display = 'none';
+        isLogging = false;
+    }
+
+    loginBtn.addEventListener('click', handleLoginAndFetch);
+    logoutBtn.addEventListener('click', handleLogout);
+    loginEmailInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLoginAndFetch(); });
+
+    loginSection.style.display = 'flex';
+    dashboardSection.style.display = 'none';
+    resetDashboardPlaceholders();
+    hideLoader();
+
+    errorPopup.addEventListener('click', (e) => { if (e.target === errorPopup) closeErrorPopup(); });
+</script>
+</body>
+</html>
