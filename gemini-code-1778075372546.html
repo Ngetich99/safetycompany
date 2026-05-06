@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking System | Hazard Safety Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        .bg-brand-red { background-color: #8B0000; }
+        .text-gold { color: #FFD700; }
+        .border-gold { border-color: #FFD700; }
+        .btn-gradient {
+            background: linear-gradient(90deg, #8B0000 0%, #b30000 100%);
+        }
+    </style>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen">
+
+    <div class="absolute inset-0 z-0 opacity-5" style="background-image: radial-gradient(#8B0000 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+    <div class="relative z-10 max-w-2xl w-full px-6 text-center">
+        <div id="icon-container" class="mb-6 relative inline-block">
+            <div class="w-20 h-20 bg-brand-red rounded-xl flex items-center justify-center mx-auto shadow-lg rotate-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="Ref: M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+            </div>
+            <div id="gear" class="absolute -top-2 -right-2 text-slate-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 animate-spin-slow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            </div>
+        </div>
+
+        <h1 id="headline" class="text-3xl md:text-5xl font-bold text-slate-900 mb-4">
+            Booking System <br><span class="text-brand-red">Coming Soon</span>
+        </h1>
+        
+        <p id="subtext" class="text-slate-600 text-lg mb-10">
+            We’re refining our online booking process to make scheduling your **Safety Audits** and **Fire Safety Training** seamless.
+        </p>
+
+        <div id="action-box" class="bg-slate-50 border border-slate-200 p-8 rounded-2xl shadow-sm mb-8">
+            <h3 class="text-slate-800 font-semibold mb-4">Need to book a session urgently?</h3>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:info@hazardsafetys.com" class="btn-gradient text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
+                    Email for Booking
+                </a>
+                <a href="tel:+254000000000" class="border-2 border-brand-red text-brand-red px-8 py-3 rounded-lg font-medium hover:bg-red-50 transition-all">
+                    Call Our Team
+                </a>
+            </div>
+        </div>
+
+        <a id="back-home" href="index.html" class="text-slate-500 hover:text-brand-red transition-colors flex items-center justify-center gap-2">
+            <span>← Back to main site</span>
+        </a>
+    </div>
+
+    <script>
+        gsap.from("#icon-container", { duration: 1, y: -30, opacity: 0, ease: "bounce.out" });
+        gsap.from("#headline", { duration: 0.8, x: -20, opacity: 0, delay: 0.3 });
+        gsap.from("#subtext", { duration: 0.8, x: 20, opacity: 0, delay: 0.5 });
+        gsap.from("#action-box", { duration: 1, y: 40, opacity: 0, delay: 0.7, ease: "power4.out" });
+
+        // Spin the gear infinitely
+        gsap.to("#gear", { 
+            rotation: 360, 
+            duration: 8, 
+            repeat: -1, 
+            ease: "none" 
+        });
+    </script>
+</body>
+</html>
