@@ -128,17 +128,40 @@
 
         <!-- Navbar -->
        <style>
-/* NAVBAR FIX */
+/* ===== TOP BAR ===== */
+.top-bar {
+    background: #1f2d3d;
+    color: #fff;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-contact span {
+    margin-right: 20px;
+}
+
+.top-icons i {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    margin: 0;
+    border: none;
+    background: #fff;
+}
+
 .navbar .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-/* LEFT: Logo */
-.navbar-header {
-    display: flex;
-    align-items: center;
 }
 
 /* BRAND */
@@ -146,114 +169,112 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 0;
 }
 
 .navbar-brand img {
-    height: 40px;
+    height: 45px;
 }
 
 .brand-text {
     font-weight: bold;
     font-size: 16px;
-    color: #000;
-    white-space: nowrap;
 }
 
-/* RIGHT SIDE MENU */
-.navbar-collapse {
-    display: flex !important;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-/* MENU ITEMS */
+/* MENU */
 .navbar-nav {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .navbar-nav > li > a {
     font-weight: 500;
-    letter-spacing: 0.5px;
+    color: #222 !important;
 }
 
-/* BOOK BUTTON */
+/* CTA BUTTON */
 .btn-book {
-    background-color: #e74c3c;
+    background: #27ae60;
     color: #fff !important;
-    padding: 10px 18px !important;
+    padding: 12px 22px;
     border-radius: 6px;
     font-weight: bold;
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
+/* 🔥 BLINK EFFECT (SMOOTH) */
+@keyframes blinkSoft {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+.btn-book {
+    animation: blinkSoft 1.5s infinite;
+}
+
+/* OPTIONAL: Hover stops blinking */
 .btn-book:hover {
-    background-color: #c0392b;
+    animation: none;
+    background: #1e8449;
+}
+
+/* DROPDOWN */
+.dropdown-menu {
+    min-width: 220px;
 }
 </style>
 
-<nav class="navbar navbar-default header-nav">
+<!-- ===== TOP BAR ===== -->
+<div class="top-bar">
+    <div class="container">
+        <div class="top-contact">
+            <span>📞 +254 731 789 916</span>
+            <span>📞 +254 748 465 888</span>
+            <span>✉ admin@safetec.co.ke</span>
+        </div>
+        <div class="top-icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+    </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-default">
     <div class="container">
 
-        <!-- Brand and toggle -->
+        <!-- LOGO -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Logo + Name -->
-            <a class="navbar-brand" href="index.html">
-                <img src="img/logonew.png" alt="Logo">
+            <a class="navbar-brand" href="#">
+                <img src="img/logonew.png">
                 <span class="brand-text">HAZARD CONTROL TECHNOLOGIES LTD</span>
             </a>
         </div>
 
-        <!-- Menu -->
+        <!-- MENU -->
         <div class="collapse navbar-collapse" id="main-navbar">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
 
-                <li class="active"><a href="index.html">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-
-                <!-- Services -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        SERVICES <span class="caret"></span>
+                        Services <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="occupational-safety-health-audit-training-kenya.html">OSH Audit</a></li>
-                        <li><a href="fire-safety-audit-kenya.html">Fire Safety Audit</a></li>
-                        <li><a href="risk-assessment-audit-kenya.html">Risk Assessment</a></li>
-                        <li><a href="firesafety-training-kenya.html">Fire Training</a></li>
-                        <li><a href="first-aid-training-kenya.html">First Aid</a></li>
-                        <li><a href="fire-extinguishers-supply.html">Fire Equipment</a></li>
+                        <li><a href="#">OSH Audit</a></li>
+                        <li><a href="#">Fire Audit</a></li>
                     </ul>
                 </li>
 
-                <li><a href="contact.html">CONTACT</a></li>
-
-                <!-- Training Portal -->
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        TRAINING PORTAL <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="fire.html" target="_blank">Fire Materials</a></li>
-                        <li><a href="OSH.html" target="_blank">OSH Materials</a></li>
-                    </ul>
-                </li>
-
-                <!-- BOOK BUTTON -->
-                <li>
-                    <a href="booking.html" class="btn-book">BOOK NOW</a>
-                </li>
-
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contacts</a></li>
             </ul>
+
+            <!-- CTA -->
+            <a href="booking.html" class="btn-book">BOOK NOW</a>
+
         </div>
     </div>
 </nav>
