@@ -162,12 +162,16 @@
 
 .brand-text {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
 }
 
-/* MENU CENTERING FIX */
+/* MENU */
 .navbar-nav {
     margin-left: 40px;
+}
+
+.navbar-nav > li > a {
+    font-weight: 500;
 }
 
 /* CTA RIGHT */
@@ -180,17 +184,17 @@
 
 /* BUTTON */
 .btn-book {
-    background: #27ae60;
+    background: #e74c3c;
     color: #fff !important;
     padding: 12px 22px;
     border-radius: 6px;
     font-weight: bold;
 }
 
-/* 🔥 PULSE (better than blinking) */
+/* 🔥 SMOOTH PULSE */
 @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    50% { transform: scale(1.06); }
     100% { transform: scale(1); }
 }
 
@@ -200,7 +204,11 @@
 
 .btn-book:hover {
     animation: none;
-    background: #1e8449;
+    background: #c0392b;
+}
+
+.dropdown-menu {
+    min-width: 230px;
 }
 </style>
 
@@ -208,8 +216,9 @@
 <div class="top-bar">
     <div class="container">
         <div>
-            📞 +254 727 056 087 &nbsp;&nbsp;
-            ✉ consultancy@hazardsafetys.com
+            📞 +254 731 789 916 &nbsp;&nbsp;
+            📞 +254 748 465 888 &nbsp;&nbsp;
+            ✉ admin@safetec.co.ke
         </div>
         <div>
             <i class="fa fa-facebook"></i>
@@ -225,33 +234,52 @@
 
         <!-- LOGO -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img src="img/logonew.png">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logonew.png" alt="Logo">
                 <span class="brand-text">HAZARD CONTROL TECHNOLOGIES LTD</span>
             </a>
         </div>
 
         <!-- MENU -->
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
 
+                <li class="active"><a href="index.html">HOME</a></li>
+
+                <li><a href="about.html">ABOUT</a></li>
+
+                <!-- SERVICES -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Services <span class="caret"></span>
+                        SERVICES <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">OSH Audit</a></li>
-                        <li><a href="#">Fire Audit</a></li>
+                        <li><a href="occupational-safety-health-audit-training-kenya.html">Occupational Safety and Health Audit</a></li>
+                        <li><a href="fire-safety-audit-kenya.html">Fire Safety Audit</a></li>
+                        <li><a href="risk-assessment-audit-kenya.html">Risk Assessment Audit</a></li>
+                        <li><a href="firesafety-training-kenya.html">Fire Safety Training</a></li>
+                        <li><a href="first-aid-training-kenya.html">First Aid Training</a></li>
+                        <li><a href="fire-extinguishers-supply.html">Fire Equipment Supplies</a></li>
                     </ul>
                 </li>
 
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contacts</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+
+                <!-- TRAINING PORTAL -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        TRAINING PORTAL <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="fire.html" target="_blank">Fire Safety Materials</a></li>
+                        <li><a href="OSH.html" target="_blank">OSH Materials</a></li>
+                    </ul>
+                </li>
+
             </ul>
         </div>
 
-        <!-- CTA (ABSOLUTE RIGHT) -->
+        <!-- CTA BUTTON -->
         <div class="nav-cta">
             <a href="booking.html" class="btn-book">BOOK NOW</a>
         </div>
