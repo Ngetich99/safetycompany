@@ -1,48 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Inspection</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment | Hazard Control Technologies</title>
 
   <style>
+
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
-      font-family: Arial, sans-serif;
+      font-family:Arial, sans-serif;
     }
 
     body{
       background:#f4f7fb;
+      color:#1e293b;
     }
 
+    /* HERO SECTION */
     .hero{
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+      background:linear-gradient(135deg,#0f172a,#1e293b);
       color:white;
-      padding:40px 20px;
       text-align:center;
+      padding:50px 20px;
     }
 
     .hero h1{
       font-size:42px;
-      margin-bottom:10px;
+      margin-bottom:15px;
     }
 
     .hero p{
       font-size:18px;
       opacity:0.9;
+      max-width:700px;
+      margin:auto;
+      line-height:1.6;
     }
 
+    /* INFO BAR */
+    .info-bar{
+      width:95%;
+      max-width:1200px;
+      margin:25px auto 0;
+      background:white;
+      padding:20px;
+      border-radius:16px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.08);
+      text-align:center;
+      line-height:1.8;
+    }
+
+    .info-bar strong{
+      color:#0f172a;
+    }
+
+    .info-bar a{
+      color:#f03355;
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+    /* BOOKING CONTAINER */
     .booking-wrapper{
       width:95%;
       max-width:1200px;
-      margin:40px auto;
+      height:80vh;
+      margin:25px auto 40px;
       background:white;
-      border-radius:18px;
+      border-radius:20px;
       overflow:hidden;
-      box-shadow:0 10px 30px rgba(0,0,0,0.1);
-      height:85vh;
+      position:relative;
+      box-shadow:0 10px 30px rgba(0,0,0,0.12);
     }
 
     iframe{
@@ -50,22 +81,171 @@
       height:100%;
       border:none;
     }
+
+    /* LOADER SCREEN */
+    #loader-screen{
+      position:absolute;
+      inset:0;
+      background:white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      gap:20px;
+      z-index:10;
+    }
+
+    /* LOADER */
+    .loader {
+      width: 50px;
+      aspect-ratio: 1;
+      display: grid;
+    }
+
+    .loader:before,
+    .loader:after {
+      content: "";
+      grid-area: 1/1;
+      border-radius: 50%;
+      background: #f03355;
+      -webkit-mask: repeating-linear-gradient(
+        #000 0 10px,
+        #0000 0 20px
+      );
+    }
+
+    .loader:after {
+      -webkit-mask: repeating-linear-gradient(
+        #0000 0 10px,
+        #000 0 20px
+      );
+      animation: l36 1.5s infinite;
+    }
+
+    @keyframes l36 {
+
+      0%,
+      10%{
+        transform: rotate(0) translate(0);
+      }
+
+      35%{
+        transform: rotate(0) translate(100%);
+      }
+
+      66%{
+        transform: rotate(180deg) translate(100%);
+      }
+
+      90%,
+      100%{
+        transform: rotate(180deg) translate(0);
+      }
+    }
+
+    .loading-text{
+      font-size:18px;
+      font-weight:600;
+      color:#1e293b;
+    }
+
+    /* FOOTER */
+    .footer{
+      text-align:center;
+      padding:25px;
+      color:#64748b;
+      font-size:14px;
+    }
+
+    /* MOBILE */
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:30px;
+      }
+
+      .hero p{
+        font-size:16px;
+      }
+
+      .booking-wrapper{
+        height:75vh;
+      }
+
+      .info-bar{
+        font-size:14px;
+      }
+
+    }
+
   </style>
 </head>
 
 <body>
 
+  <!-- HERO -->
   <section class="hero">
-    <h1>Book an Appointment has never been this easy</h1>
-    <p>Schedule fire equipment inspections, safety audits ,safety training and consultations here.</p>
+    <h1>Book an Appointment</h1>
+
+    <p>
+      Schedule fire safety inspections, training sessions,
+      equipment servicing, audits, and consultations online.
+    </p>
   </section>
 
+  <!-- INFO -->
+  <div class="info-bar">
+
+    <p>
+      <strong>Need assistance?</strong>
+      Call us on
+      <a href="tel:0727056087">0727056087</a>
+      for inquiries or support.
+    </p>
+
+    <p>
+      After booking, one of our officers will contact you
+      to confirm and guide you on the next steps.
+    </p>
+
+  </div>
+
+  <!-- BOOKING -->
   <div class="booking-wrapper">
-    <iframe 
+
+    <!-- LOADER -->
+    <div id="loader-screen">
+      <div class="loader"></div>
+      <div class="loading-text">
+        Loading Booking Calendar...
+      </div>
+    </div>
+
+    <!-- ZOHO CALENDAR -->
+    <iframe
+      id="bookingFrame"
       src="https://calendar.zoho.com/zc/view/slot-booking/zz080112209f54011ffb009afae2cc5fd3bdea81e19845f51d3699524b5a3f6005e303daa5"
       title="Appointment Booking">
     </iframe>
+
   </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2026 Hazard Control Technologies Ltd. All Rights Reserved.
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+
+    const iframe = document.getElementById("bookingFrame");
+    const loader = document.getElementById("loader-screen");
+
+    iframe.onload = function () {
+      loader.style.display = "none";
+    };
+
+  </script>
 
 </body>
 </html>
