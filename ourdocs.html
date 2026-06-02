@@ -1,1 +1,491 @@
-mbcd
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Company Documents | Hazard Control Technologies Ltd</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+brand: '#dc2626',      // light red primary
+darkbrand: '#b91c1c'   // deeper red for accents
+}
+}
+}
+}
+</script>
+
+<style>
+/* ----- LIGHT RED THEME OVERRIDES (White background, light red accents) ----- */
+
+/* RESET BODY & GLOBAL */
+body {
+background: #ffffff !important;
+color: #1f2937 !important;
+font-family: 'Arial', sans-serif;
+}
+
+/* Replace dark glow with soft light red glow */
+.glow-bg::before,
+.glow-bg::after {
+display: none;
+}
+
+/* Optional: gentle ambient light red glow (soft) */
+body::before {
+content: "";
+position: fixed;
+top: -20%;
+left: -20%;
+width: 140%;
+height: 140%;
+background: radial-gradient(circle at 30% 20%, rgba(254, 202, 202, 0.4), rgba(255,255,240,0) 70%);
+pointer-events: none;
+z-index: 0;
+}
+
+/* HEADER: light red gradient + dark text */
+header {
+background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%) !important;
+border-bottom: 1px solid #fecaca !important;
+box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+header h1 {
+color: #7f1d1d !important;
+text-shadow: none;
+}
+
+header p {
+color: #b91c1c !important;
+}
+
+/* Hero Section */
+section.text-center h2 {
+color: #991b1b;
+text-shadow: 0 2px 5px rgba(185, 28, 28, 0.1);
+}
+
+section.text-center p.text-gray-300 {
+color: #4b5563 !important;
+}
+
+/* Warning / Confidential box (light red theme) */
+.bg-red-950\/40 {
+background: #fff5f5 !important;
+border: 1px solid #fecaca !important;
+backdrop-filter: none !important;
+}
+
+.bg-red-950\/40 p {
+color: #7f1d1d !important;
+}
+
+.bg-red-950\/40 strong {
+color: #b91c1c;
+}
+
+/* DOCUMENT CARDS – fresh white + light red elegance */
+.doc-card {
+background: #ffffff !important;
+backdrop-filter: none !important;
+border: 1px solid #ffdede !important;
+border-radius: 1.75rem !important;
+box-shadow: 0 12px 28px -8px rgba(185, 28, 28, 0.08), 0 1px 2px rgba(0,0,0,0.02) !important;
+transition: all 0.35s ease !important;
+animation: breathingLight 3s infinite ease-in-out !important;
+cursor: pointer;
+}
+
+/* light red breathing keyframes */
+@keyframes breathingLight {
+0% {
+transform: scale(1);
+box-shadow: 0 8px 20px -6px rgba(220, 38, 38, 0.12), 0 0 0 2px rgba(254, 202, 202, 0.3);
+}
+50% {
+transform: scale(1.02);
+box-shadow: 0 20px 30px -12px rgba(220, 38, 38, 0.25), 0 0 0 4px rgba(252, 165, 165, 0.5);
+}
+100% {
+transform: scale(1);
+box-shadow: 0 8px 20px -6px rgba(220, 38, 38, 0.12), 0 0 0 2px rgba(254, 202, 202, 0.3);
+}
+}
+
+/* Hover effect: stronger red glow + lift */
+.doc-card:hover {
+transform: translateY(-8px) scale(1.02) !important;
+box-shadow: 0 28px 36px -16px rgba(185, 28, 28, 0.35), 0 0 0 3px #fecaca, 0 0 0 8px rgba(254, 202, 202, 0.4) !important;
+border-color: #fca5a5 !important;
+}
+
+/* Shine effect (light version) */
+.doc-card::before {
+content: "";
+position: absolute;
+top: 0;
+left: -120%;
+width: 70%;
+height: 100%;
+background: linear-gradient(120deg, transparent, rgba(255, 210, 210, 0.5), transparent);
+transform: skewX(-25deg);
+transition: 0.7s;
+z-index: 1;
+pointer-events: none;
+}
+
+.doc-card:hover::before {
+left: 130%;
+}
+
+/* Card content text colors */
+.doc-card h3 {
+color: #2d1a1a !important;
+font-weight: 800;
+}
+
+.doc-card p {
+color: #4b5563 !important;
+}
+
+/* PDF icon stays vibrant red */
+.doc-card i.fa-file-pdf {
+color: #dc2626 !important;
+filter: drop-shadow(0 2px 6px rgba(220, 38, 38, 0.2));
+transition: 0.3s;
+}
+
+.doc-card:hover i.fa-file-pdf {
+transform: scale(1.1) rotate(-3deg);
+filter: drop-shadow(0 0 8px #ef4444);
+}
+
+/* PDF badge */
+.doc-card span.bg-red-700 {
+background: #dc2626 !important;
+color: white;
+box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Footer light theme */
+footer {
+background: #fef2f2 !important;
+border-top: 1px solid #ffdddd !important;
+}
+
+footer p.text-gray-400 {
+color: #7f1d1d !important;
+font-weight: 500;
+}
+
+footer p.text-red-500 {
+color: #b91c1c !important;
+}
+
+/* Additional tweaks: remove dark borders, ensure readable */
+.border-red-800 {
+border-color: #fecaca !important;
+}
+
+.bg-gradient-to-r.from-darkbrand.to-brand {
+background: linear-gradient(120deg, #ffefef, #ffe0e0) !important;
+}
+
+.text-red-200 {
+color: #9b2c2c !important;
+}
+
+.rounded-2xl.bg-red-950\/40.backdrop-blur-sm {
+backdrop-filter: none !important;
+background: #fff8f8 !important;
+}
+
+header .drop-shadow-\[0_0_15px_red\] {
+filter: drop-shadow(0 2px 8px rgba(220,38,38,0.2));
+}
+
+/* Also ensure all normal texts visible */
+.text-gray-300 {
+color: #374151 !important;
+}
+
+.text-white {
+color: #1f2937 !important;
+}
+
+/* any tailwind overrides for clean look */
+.text-red-500, .fa-red {
+color: #dc2626;
+}
+
+/* Breathing effect on PDF badge stays consistent */
+.doc-card span {
+animation: breathingLight 2.5s infinite ease-in-out;
+display: inline-block;
+}
+
+/* subtle hover glow around card icons group */
+.doc-card:hover i {
+text-shadow: 0 0 6px #fca5a5;
+}
+
+/* ensure body relative keeps z context */
+.glow-bg {
+position: relative;
+z-index: 1;
+}
+
+/* no content removal – exactly same document structure */
+</style>
+</head>
+
+<body class="text-gray-800 relative glow-bg">
+
+<!-- HEADER: LIGHT RED REFRESHED -->
+<header class="shadow-md border-b border-red-100 relative z-10">
+<div class="max-w-7xl mx-auto px-6 py-6 flex items-center">
+<div class="flex items-center space-x-4">
+<img src="img/techlogo.png" 
+     class="w-16 h-16 object-contain drop-shadow-[0_2px_8px_rgba(220,38,38,0.3)]" 
+     alt="Hazard Control Technologies logo">
+<div>
+<h1 class="text-3xl font-bold tracking-wide text-red-800">
+Hazard Control Technologies Ltd
+</h1>
+<p class="text-red-700 text-sm mt-1 font-medium">
+Fire Safety • OSH Compliance • Risk Management
+</p>
+</div>
+</div>
+</div>
+</header>
+
+<!-- HERO: White + light red accents -->
+<section class="text-center py-16 relative z-10">
+<h2 class="text-4xl font-extrabold text-red-800 drop-shadow-sm">
+Confidential Official Company Documents
+</h2>
+<p class="text-gray-600 mt-4 max-w-3xl mx-auto">
+View and access our legal, compliance, certification,
+and operational company documents.
+</p>
+
+<div class="max-w-5xl mx-auto mt-6 bg-red-50 border border-red-200 rounded-2xl p-6 shadow-sm">
+<p class="text-red-800 leading-relaxed">
+These materials are provided strictly for authorized client use only and contain confidential company information.
+Unauthorized sharing, reproduction, distribution, or disclosure to third parties without written consent from <strong class="text-red-700">Hazard Control Technologies Limited</strong> may constitute an offence under applicable laws of Kenya, including data protection and confidentiality regulations.
+</p>
+</div>
+</section>
+
+<!-- DOCUMENT GRID – All original documents preserved, light elegant cards -->
+<section class="max-w-7xl mx-auto px-6 pb-20 relative z-10">
+<div class="grid md:grid-cols-3 sm:grid-cols-2 gap-8">
+
+<!-- 1. Company Profile (flipbook link) -->
+<a href="https://heyzine.com/flip-book/60d3ea408f.html" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold tracking-wide">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Company Profile</h3>
+<p class="text-gray-600 text-sm">Overview of our services, experience, and operations.</p>
+</a>
+
+<!-- 2. Certificate of Incorporation -->
+<a href="doc/INCOPRATION.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Certificate of Incorporation</h3>
+<p class="text-gray-600 text-sm">Official business registration certificate from BRS.</p>
+</a>
+
+<!-- 3. CR12 -->
+<a href="doc/LATEST CR12.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">CR12</h3>
+<p class="text-gray-600 text-sm">Latest business search from BRS.</p>
+</a>
+
+<!-- 4. Nairobi County Business Permit -->
+<a href="doc/HAZARD PERMIT.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Nairobi County Business Permit</h3>
+<p class="text-gray-600 text-sm">Valid business permit documentation.</p>
+</a>
+
+<!-- 5. KRA PIN -->
+<a href="doc/ORIGINAL KRA.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">KRA PIN</h3>
+<p class="text-gray-600 text-sm">Valid KRA registration document.</p>
+</a>
+
+<!-- 6. VAT Registration -->
+<a href="doc/KRA HAZARD.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">VAT Registration</h3>
+<p class="text-gray-600 text-sm">Valid VAT registration documentation from KRA.</p>
+</a>
+
+<!-- 7. Tax Compliance Certificate -->
+<a href="doc/TCC.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Tax Compliance Certificate</h3>
+<p class="text-gray-600 text-sm">Valid KRA tax compliance certificate.</p>
+</a>
+
+<!-- 8. Safety Auditor Credentials (DOSH) -->
+<a href="doc/doshs.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Safety Auditor Credentials</h3>
+<p class="text-gray-600 text-sm">Valid DOSH licence for audits and training.</p>
+</a>
+
+<!-- 9. Corruption Policy -->
+<a href="doc/corruption.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Corruption Policy</h3>
+<p class="text-gray-600 text-sm">Anti-corruption and ethical business practices policy.</p>
+</a>
+
+<!-- 10. OSHA Policy -->
+<a href="doc/OSHA POLICY.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">OSHA Policy</h3>
+<p class="text-gray-600 text-sm">Commitment to safe workplaces and OSH compliance.</p>
+</a>
+
+<!-- 11. DOSH Fire Safety Training Licence -->
+<a href="doc/training institute.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">DOSH Fire Safety Training Licence</h3>
+<p class="text-gray-600 text-sm">Approved fire safety training institution licence.</p>
+</a>
+
+<!-- 12. DOSH OSH Training Licence -->
+<a href="doc/osha.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">DOSH OSH Training Licence</h3>
+<p class="text-gray-600 text-sm">Approved Occupational Safety and Health training provider.</p>
+</a>
+
+<!-- 13. Work at Height Training Licence -->
+<a href="doc/height.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Work at Height Training Licence</h3>
+<p class="text-gray-600 text-sm">DOSH accredited Work at Height training program.</p>
+</a>
+
+<!-- 14. NITA Registration -->
+<a href="doc/NITA.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">NITA Registration</h3>
+<p class="text-gray-600 text-sm">NITA approved training provider certification.</p>
+</a>
+
+<!-- 15. Customer Care Policy -->
+<a href="doc/customer.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Customer Care Policy</h3>
+<p class="text-gray-600 text-sm">Professional and client-focused service standards policy.</p>
+</a>
+
+<!-- 16. LPOs (Proof of projects) -->
+<a href="doc/lpo.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">LPOs</h3>
+<p class="text-gray-600 text-sm">Proof of previous business transactions and projects.</p>
+</a>
+
+<!-- 17. Hazard Rate Card -->
+<a href="doc/HAZARD RATE CARD.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Hazard Rate Card</h3>
+<p class="text-gray-600 text-sm">Official pricing guide for services and compliance solutions.</p>
+</a>
+
+<!-- 18. Human Resource Policy -->
+<a href="doc/human resource policy.pdf" target="_blank" class="doc-card rounded-3xl p-6 no-underline">
+<div class="flex items-center justify-between mb-5">
+<i class="fa-solid fa-file-pdf text-5xl text-red-600"></i>
+<span class="bg-red-600 text-white text-xs px-3 py-1 rounded-full font-semibold">PDF</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Human Resource Policy</h3>
+<p class="text-gray-600 text-sm">Employment standards and workplace procedures policy.</p>
+</a>
+
+</div>
+</section>
+
+<!-- FOOTER : light matching theme -->
+<footer class="bg-red-50 border-t border-red-200 text-center py-8 relative z-10">
+<p class="text-red-800 font-medium">
+© 2026 Hazard Control Technologies Ltd. All Rights Reserved.
+</p>
+<p class="text-red-600 text-sm mt-2 font-semibold">
+Confidential • Secure • Authorized Access Only
+</p>
+</footer>
+
+</body>
+</html>
